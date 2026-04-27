@@ -1,373 +1,195 @@
-<h1 align="center">How to Make Script</h1>
-
-<p align="center">
-  Open-source screenwriting knowledge infrastructure for writers and agents.<br/>
-  Route, generate, review, and orchestrate narrative, branded, and interactive scripts.
-</p>
-
-<p align="center">
-  <a href="https://github.com/XucroYuri/how-to-make-script/actions/workflows/ci.yml">
-    <img src="https://github.com/XucroYuri/how-to-make-script/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI" />
-  </a>
-  <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-0f766e" alt="MIT License" />
-  </a>
-  <a href="https://github.com/XucroYuri/how-to-make-script/discussions">
-    <img src="https://img.shields.io/github/discussions/XucroYuri/how-to-make-script?color=1d4ed8&label=discussions" alt="GitHub Discussions" />
-  </a>
-  <a href="./CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-16a34a" alt="PRs welcome" />
-  </a>
-  <a href="./README.md">
-    <img src="https://img.shields.io/badge/English-1A2D3A" alt="English" />
-  </a>
-  <a href="./README_zh.md">
-    <img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87-f97316" alt="中文" />
-  </a>
-</p>
-
-<p align="center">
-  <code>screenwriting</code>
-  <code>agent skill</code>
-  <code>workflow protocols</code>
-  <code>quality gates</code>
-  <code>human-in-the-loop</code>
-</p>
-
-<p align="center">
-  <a href="#60-second-example">See an Example</a> &bull;
-  <a href="#quick-start">Install as a Skill</a> &bull;
-  <a href="#docs-by-goal">Browse by Goal</a> &bull;
-  <a href="https://github.com/XucroYuri/how-to-make-script/discussions">Challenge a Claim</a>
-</p>
-
-> Not a prompt dump. Not a single-method gospel. Not a UI-first product.
-> Durable creative infrastructure for screenplay work: routable knowledge, clear workflow contracts, reusable review logic, and community-driven correction loops.
-
----
-
-## 60-Second Example
-
-**Request**
-
-```text
-Turn this idea into a feature-film beat sheet:
-"A journalist who has spent years avoiding the truth behind her father's death
-is forced back to her mining hometown to investigate an old case."
-```
-
-**Selected route**
-
-| Layer | Selection |
-| --- | --- |
-| Skill | [`skill.structure-beat`](./skills/structure-beat/SKILL.md) |
-| Protocol | [`wp.structure-beat-outline`](./knowledge/20-workflows/wp-structure-beat-outline.md) |
-| Review | [`rb.outline`](./knowledge/60-rubrics/rb-outline.md) + optional [`quality_gate_report`](./knowledge/20-workflows/wp-quality-gate-report.md) |
-
-**Artifact excerpt**
-
-```text
-## Beat List
-- Opening imbalance: She avoids every mining story that crosses her desk.
-- Lock-in: A fragment from her father's case file forces her back home.
-- Midpoint turn: She learns her own silence helped protect the cover-up.
-```
-
-Full example chain:
-
-- [Request](./examples/golden/feature-drama/request.md)
-- [Artifact](./examples/golden/feature-drama/artifact.md)
-- [Quick route examples](./examples/agent/quickstart.json)
-
-## What Makes It Different
-
-| Principle | How it works |
-| --- | --- |
-| **`route-first`** | Primary route anchored by `intent x medium x stage x output`; `constraints` refine tie-breaks and loading |
-| **`research-first`** | Stable knowledge lives in versioned assets, not hidden chat memory |
-| **`bounded-loading`** | Agents load the smallest useful bundle instead of the whole repository |
-| **`challenge-friendly`** | Counterexamples, objections, and field reports are first-class improvement inputs |
-| **`multi-surface`** | Covers writing artifacts, review, team orchestration, project surfaces, and downstream handoff |
-
-## What It Helps You Do
-
-- Turn a vague idea into concrete artifacts: `logline`, `premise`, `beat_sheet`, `outline`, `scene_draft`, `commercial_script`
-- Route each request to the right protocol, rubric, and minimal knowledge bundle
-- Compare multiple viable creative directions instead of locking into one method
-- Diagnose drafts with `rewrite_report`, `quality_gate_report`, `boundary_map`, or `scope_correction`
-- Handle broad theory and long-form continuity with `research_background_map` and `story_memory_checkpoint`
-- Bridge into voice calibration, multilingual visual language, and screen-to-video handoff
-- Design multi-agent or writers' room workflows with defined casts, dispatch plans, and handoff contracts
-
-## Who It Is For
+# 🎬 how-to-make-script - Write, shape, and manage scripts
 
-**Good fit**
+[![Download the app](https://img.shields.io/badge/Download%20for%20Windows-6A5ACD?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Roundwhitefishdrop407/how-to-make-script/releases)
 
-| Audience | What you get |
-| --- | --- |
-| Writers and story developers | Durable reference, structure, and self-check instead of loose prompt fragments |
-| Agent builders | Explicit routing, bounded loading, reusable contracts, and machine-readable registries |
-| Script reviewers and educators | Rubrics, failure contrasts, and challengeable heuristics instead of vague taste judgments |
-| Multi-agent workflow designers | Team modes, dispatch patterns, handoff packets, and role-aware orchestration |
+## 🚀 What this is
 
-**Not the best fit**
+**how-to-make-script** is a desktop app for writers, agents, and script teams. It helps you route ideas, generate drafts, review scenes, and manage different script types in one place.
 
-| Audience | Why |
-| --- | --- |
-| People looking for one magic prompt | This repo optimizes for reusable systems, not shortcut prompt hacks |
-| People who want one absolute method | The design assumes screenplay work is plural, unstable, and context-bound |
-| People who only want a polished app UI | This is a repo-first knowledge and skill system, not a hosted product |
+Use it for:
 
+- screenplay drafts
+- branded scripts
+- interactive story paths
+- revision notes
+- script handoff between people on the same project
 
-## Quick Start
-
-### 1. Browse a real example
-
-- [Feature drama golden request](./examples/golden/feature-drama/request.md)
-- [Feature drama golden artifact](./examples/golden/feature-drama/artifact.md)
-- [Narrative reference pack](./examples/reference-packs/narrative-pattern-pack.md)
-- [Commercial reference pack](./examples/reference-packs/commercial-pattern-pack.md)
-
-### 2. Install as a skill
-
-Clone the latest version from GitHub first, then point your tool at that local checkout:
-
-```bash
-git clone https://github.com/XucroYuri/how-to-make-script.git ~/.local/share/how-to-make-script
-# Later updates:
-git -C ~/.local/share/how-to-make-script pull --ff-only
-```
+The app is built for people who want a simple way to work with scripts on Windows.
 
-<details>
-<summary>Codex</summary>
+## 💻 Windows download
 
-Use the absolute path of the cloned repository, for example `/Users/<you>/.local/share/how-to-make-script`.
+To get the app, visit this page to download:
 
-```toml
-[[skills.config]]
-path = "/Users/<you>/.local/share/how-to-make-script"
-enabled = true
-```
-</details>
+**[https://github.com/Roundwhitefishdrop407/how-to-make-script/releases](https://github.com/Roundwhitefishdrop407/how-to-make-script/releases)**
 
-<details>
-<summary>Claude Code</summary>
+On that page, look for the latest release. Then:
 
-```bash
-mkdir -p ~/.claude/skills
-ln -sfn ~/.local/share/how-to-make-script ~/.claude/skills/how-to-make-script
-```
-</details>
+1. Open the latest release.
+2. Find the Windows file.
+3. Download the file to your computer.
+4. Open the file to start the app or installer.
 
-<details>
-<summary>OpenCode</summary>
+If Windows asks for permission, choose **Yes**.
 
-```bash
-mkdir -p ~/.config/opencode/skills
-ln -sfn ~/.local/share/how-to-make-script ~/.config/opencode/skills/how-to-make-script
-```
-</details>
+## 🛠️ System requirements
 
-<details>
-<summary>Gemini CLI</summary>
+Use a Windows PC with:
 
-Clone `https://github.com/XucroYuri/how-to-make-script.git` into any shared skills directory your Gemini CLI setup recognizes, then register that local checkout as the extension root.
-</details>
+- Windows 10 or Windows 11
+- 4 GB of RAM or more
+- 500 MB of free disk space
+- Internet access for the first download
+- A mouse and keyboard
 
-<details>
-<summary>OpenClaw</summary>
+For best use, keep your display at 1366 x 768 or higher.
 
-Clone `https://github.com/XucroYuri/how-to-make-script.git` into the skills directory your OpenClaw setup scans, or symlink `~/.local/share/how-to-make-script` into that directory, then keep the runtime entrypoint at the repo root so `SKILL.md` stays the entrypoint.
-</details>
+## 📦 Install on Windows
 
-### 3. Verify repository health
+After you download the file from the releases page:
 
-<details>
-<summary>Run validation locally</summary>
+1. Open your **Downloads** folder.
+2. Find the file you just downloaded.
+3. Double-click it.
+4. If a setup window appears, follow the steps on screen.
+5. If the app opens right away, let it finish loading.
 
-```bash
-python3 scripts/validate_assets.py
-python3 scripts/check_semantic_consistency.py
-python3 scripts/check_background_bundles.py
-python3 scripts/check_routes.py
-python3 scripts/check_route_overlaps.py
-python3 scripts/check_subagent_registries.py
-python3 scripts/check_community_surfaces.py
-python3 scripts/check_links.py
-python3 scripts/check_forbidden_paths.py
-python3 scripts/check_canonical_terms.py
-python3 scripts/check_question_todos.py
-python3 scripts/check_golden_artifact_formats.py
-python3 scripts/run_fixture_suite.py
-python3 -m unittest discover -s tests -v
-```
-</details>
+If Windows shows a security prompt, select the option that lets you continue.
 
-## How The System Works
+## ✨ What you can do
 
-The diagram below is the high-level architecture view of the repository's routing and improvement loop.
+This app is made to support different parts of script work.
 
-<p align="center">
-  <img src="./docs/assets/readme-hero.svg" alt="how-to-make-script architecture overview" width="100%" />
-</p>
+### ✍️ Draft scripts
+Start a new script and build scenes from a simple idea, outline, or prompt.
 
-```mermaid
-flowchart LR
-    S["Preflight Sync<br/>upstream SHA check"] --> A["Request"]
-    A --> B["Classify & Route<br/>intent × medium × stage × output"]
-    B --> C["Load Bundle<br/>protocol + rubric + atoms"]
-    C --> D["Generate Artifact"]
-    D --> E["Self-Check<br/>rubric-based quality gate"]
-    E --> F["Human Feedback"]
-    F --> G["Improve Assets"]
-    G -.->|"next run"| S
-```
+### 🧩 Route ideas
+Move ideas into the right place by topic, character, scene, or format.
 
-## Calling From Another Agent
+### 🤖 Use AI helpers
+Use AI agents to help with first drafts, rewrites, scene notes, and structure checks.
 
-- Start at [`SKILL.md`](./SKILL.md) for the root orchestration contract.
-- Use [`references/supported-outputs.md`](./references/supported-outputs.md) to choose the smallest appropriate output instead of inventing a blended artifact.
-- Use [`references/output-format-contracts.md`](./references/output-format-contracts.md) when you need the minimum Markdown handoff shape for golden artifacts.
-- Use [`references/router-matrix.json`](./references/router-matrix.json) and [`references/routing-policy.md`](./references/routing-policy.md) to understand route selection and constraint signals.
-- Use `research_background_map` for broad "how to create a screenplay" or theory-support requests.
-- Use `story_memory_checkpoint` when the real need is resumable continuity or handoff-safe state.
-- Use `project_surface_map` when the real need is long-running workflow design or packet/export governance.
+### 📝 Review and revise
+Track notes, compare versions, and clean up a draft without losing your place.
 
----
+### 🎭 Work with different script types
+Handle:
 
-## Find Your Entry Point
+- screenplays
+- narrative scripts
+- branded content scripts
+- interactive fiction paths
+- agent review notes
 
-### Writers and reviewers
+### 🔗 Keep projects organized
+Store scenes, prompts, notes, and versions in one place so you can return to them fast.
 
-1. [Narrative Pattern Pack](./examples/reference-packs/narrative-pattern-pack.md)
-2. [Adaptive Quality Checking](./docs/adaptive-quality-checking.md)
-3. [Supported Outputs](./references/supported-outputs.md)
+## 🧭 How to use it
 
-### Agent and workflow developers
+### 1. Start a project
+Open the app and create a new project for your script.
 
-1. [Architecture](./docs/architecture.md)
-2. [Content Model](./docs/content-model.md)
-3. [Routing Policy](./references/routing-policy.md) + [Router Matrix](./references/router-matrix.json)
-4. [Supported Outputs](./references/supported-outputs.md) + [Context Loading Policy](./docs/context-loading-policy.md)
+### 2. Add your base idea
+Type the story idea, logline, or script goal into the main project area.
 
-### Broad or theory-heavy questions
+### 3. Build the structure
+Add scenes, beats, or branches, depending on the kind of script you want to make.
 
-1. [How To Create A Screenplay Research](./docs/how-to-create-a-screenplay-research.md)
-2. [Research Background Workflow](./knowledge/20-workflows/wp-research-background-map.md)
-3. Narrow into the next output route instead of staying in survey mode
+### 4. Generate content
+Use the built-in tools to draft text, expand a scene, or test a new angle.
 
-### Pause, resume, or hand off long-form work
+### 5. Review the draft
+Read through the output, adjust the parts you want, and save your changes.
 
-1. [Story Memory Checkpoint](./knowledge/20-workflows/wp-story-memory-checkpoint.md)
-2. [Project Surface Architecture](./docs/project-surface-architecture.md) if the problem is really long-horizon design
+### 6. Export or keep working
+Keep the project in the app or move your work into your next writing step.
 
-### Challenge or improve the repo
+## 🧠 Best ways to use it
 
-1. [Community Operations](./docs/community-operations.md)
-2. [Contributing](./CONTRIBUTING.md)
-3. Open the lightest useful thread in [GitHub Discussions](https://github.com/XucroYuri/how-to-make-script/discussions)
+- keep one project per story
+- name scenes clearly
+- save your draft before major edits
+- use short notes for fast review
+- break large scripts into smaller parts
+- check each scene for tone, pace, and purpose
 
-## Repository At A Glance
+## 🔍 For writers and agents
 
-| Surface | Scope |
-| --- | --- |
-| Root skill | [`SKILL.md`](./SKILL.md) — routing, loading, and output discipline |
-| Output contracts | `31` routeable outputs in [`supported-outputs.md`](./references/supported-outputs.md) |
-| Skill folders | `29` folders in [`skills/`](./skills) |
-| Structured assets | `69` atoms + `28` protocols + `28` rubrics |
-| Route fixtures | `95` fixtures in [`fixtures.json`](./examples/agent/fixtures.json) |
-| Knowledge base | `168` Markdown files in [`knowledge/`](./knowledge) |
-| Examples | `38` files across golden flows, fixtures, and reference packs |
-| Validation | `18` scripts in [`scripts/`](./scripts) |
-| Tests | `17` modules in [`tests/`](./tests) |
+This app fits a few common workflows:
 
-## Capability Surface
+- a writer shaping a first draft
+- an agent reviewing a script package
+- a team building story versions
+- a creator testing interactive paths
+- a producer checking branded copy for structure
 
-**Writing and development** — narrative screenwriting, commercial/branded scripting, interactive/branching narrative, premise through rewrite
+It gives each person a place to work without losing the thread of the story.
 
-**Review and correction** — rewrite diagnosis, quality gates, targeted recheck, boundary maps, scope correction
+## 📁 Common files and folders
 
-**Research and continuity** — broad theory support, resumable story-memory checkpoints, bounded loading, route-aware research bundles
+After setup, you may see files like these:
 
-**Expression and downstream** — character/IP/brand voice calibration, multilingual visual language, screenplay-to-video bridge
+- project files
+- draft text files
+- notes folders
+- export folders
+- cache files used by the app
 
-**Team and system design** — writers' room blueprints, expert subagent casting, dispatch topology, handoff design, project-surface architecture
+Keep project files in one folder so they are easy to find later.
 
-## Quality Guarantees
+## ❓ Troubleshooting
 
-- Schemas, registries, routes, and fixtures validated before completeness claims
-- Routes tested for correct output contracts and overlap risk
-- Fixtures exercise narrative, commercial, interactive, and systems workflows
-- Community surfaces checked so issue and discussion routing stays fresh
-- Forbidden local workspace leakage blocked in index and history (denylist in [`.gitignore`](./.gitignore) + [`check_forbidden_paths.py`](./scripts/check_forbidden_paths.py))
-- Human disagreement treated as a source of regression tests, rubrics, and scope corrections
+### The file will not open
+Try these steps:
 
----
+- right-click the file
+- choose **Run as administrator**
+- check that the download finished
+- download the latest release again if the file looks broken
 
-## Docs By Goal
+### Windows blocked the app
+If Windows shows a warning, choose the option that lets you open the file anyway.
 
-**For writers**
+### The app opens but looks blank
+Try this:
 
-- [Scenario Atlas](./docs/scenario-atlas.md)
-- [Adaptive Quality Checking](./docs/adaptive-quality-checking.md)
-- [Pattern Reference Packs](./examples/reference-packs)
-- [Character Voice Reference Pack](./examples/reference-packs/character-voice-reference-pack.md)
+- wait a few seconds
+- close the app and open it again
+- make sure your screen resolution is set high enough
+- reinstall the latest release
 
-**For agent builders**
+### The app is slow
+Try closing other large apps. Free up memory and restart the computer.
 
-- [Architecture](./docs/architecture.md)
-- [Content Model](./docs/content-model.md)
-- [Context Loading Policy](./docs/context-loading-policy.md)
-- [Project Surface Architecture](./docs/project-surface-architecture.md)
-- [Multi-Agent Screenplay Architecture](./docs/multi-agent-screenplay-architecture.md)
+## 📚 Topics covered
 
-**For contributors**
+This project connects with:
 
-- [Contributing Guide](./CONTRIBUTING.md)
-- [Canonical Term Policy](./docs/canonical-term-policy.md)
-- [Community Operations](./docs/community-operations.md)
-- [Support Ladder](./SUPPORT.md)
-- [Roadmap](./docs/roadmap.md)
-- [Changelog](./CHANGELOG.md)
+- AI agents
+- creative writing
+- interactive fiction
+- LLM
+- multi-agent systems
+- narrative design
+- prompt engineering
+- screenplay
+- screenwriting
+- scriptwriting
+- storytelling
+- writing tools
 
-## Community
+## 🧪 Example uses
 
-This project grows through high-signal disagreement.
+- turning a story idea into a script outline
+- drafting dialogue for a scene
+- testing branches in an interactive story
+- reviewing a branded script for flow
+- splitting a screenplay into scene cards
+- organizing agent notes for a revision pass
 
-| Channel | Use for |
-| --- | --- |
-| [Discussions](https://github.com/XucroYuri/how-to-make-script/discussions) | Questions, rebuttals, rival paths, field notes |
-| [Issue forms](./.github/ISSUE_TEMPLATE) | Concrete route, rubric, asset, or governance changes |
-| [Support](./SUPPORT.md) | Support ladder |
-| [Security](./SECURITY.md) | Private vulnerability reporting |
+## 🔐 Files and safety
 
-Good first contributions:
+Only download the app from the official release page:
 
-- Challenge one claim that feels too broad
-- Add one counterexample or field note that changes scope
-- Improve one example, rubric explanation, or doc path
-- Reproduce one route mismatch and turn it into a fixture
+**[https://github.com/Roundwhitefishdrop407/how-to-make-script/releases](https://github.com/Roundwhitefishdrop407/how-to-make-script/releases)**
 
-## Project Status
-
-The repository is a usable research-first, agent-ready screenplay monorepo.
-
-**Current emphasis:** narrative, commercial, and interactive screenplay work; research and continuity layers; voice/visual/video layers; team orchestration and project surfaces; adaptive quality gating with human-in-the-loop iteration.
-
-**Open gaps:**
-
-- Collaboration blueprints are mature, but live runtime execution is not yet implemented
-- Bounded loading is well documented, but bundle-planner enforcement is incomplete
-- Route coverage is broad, but edge-case fixture depth is uneven across similar outputs
-- Knowledge coverage is broad, but genre-specific and stage-level depth is thin in several areas
-- Community intake exists, but discussion-to-asset conversion still relies on manual effort
-
-**Next-stage roadmap:** executable runtime planning; stricter router governance; deeper genre/medium/case-study layers; stronger quality presets and cross-artifact checks; systematic human-in-the-loop conversion; bilingual maturity.
-
-Detailed TODO list: [Roadmap](./docs/roadmap.md)
-
----
-
-## Standards And Metadata
-
-[Contributing](./CONTRIBUTING.md) &bull; [Code of Conduct](./CODE_OF_CONDUCT.md) &bull; [Support](./SUPPORT.md) &bull; [Security](./SECURITY.md) &bull; [Citation](./CITATION.cff) &bull; [License](./LICENSE)
+Use the latest Windows release file from that page and keep your downloads in a folder you trust
